@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -52,7 +50,7 @@ export default function Footer() {
                 width={200}
                 height={200}
                 className="h-10 w-auto object-contain"
-                priority
+                loading="lazy"
               />
            
 

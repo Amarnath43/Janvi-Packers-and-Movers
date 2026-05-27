@@ -1,12 +1,4 @@
-"use client";
-
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
-
-// ─────────────────────────────────────────────
-// FAQ DATA
-// ─────────────────────────────────────────────
 
 const faqs = [
   {
@@ -61,73 +53,46 @@ const faqs = [
   },
 ];
 
-// Split FAQs into 2 independent columns
 const leftFAQs = faqs.slice(0, Math.ceil(faqs.length / 2));
 const rightFAQs = faqs.slice(Math.ceil(faqs.length / 2));
 
-// ─────────────────────────────────────────────
-// FAQ ITEM
-// ─────────────────────────────────────────────
-
-function FAQItem({
-  faq,
-  isOpen,
-  onClick,
+function FAQColumn({
+  items,
 }: {
-  faq: (typeof faqs)[0];
-  isOpen: boolean;
-  onClick: () => void;
+  items: typeof faqs;
 }) {
   return (
-    <div className="border-b border-black/10">
-      <button
-        onClick={onClick}
-        className="flex w-full items-center justify-between gap-6 py-6 text-left"
-      >
-        <h3 className="text-[17px] font-bold leading-snug text-black">
-          {faq.question}
-        </h3>
-
-        <motion.div
-          animate={{ rotate: isOpen ? 45 : 0 }}
-          transition={{ duration: 0.25 }}
-          className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-black/10"
+    <div>
+      {items.map((faq) => (
+        <details
+          key={faq.question}
+          className="group border-b border-black/10"
         >
-          <Plus className="h-4 w-4 text-[#FF4F00]" />
-        </motion.div>
-      </button>
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6">
+            <h3 className="text-[17px] font-bold leading-snug text-black">
+              {faq.question}
+            </h3>
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{
-              duration: 0.3,
-              ease: "easeInOut",
-            }}
-            className="overflow-hidden"
-          >
-            <p className="max-w-[95%] pb-6 text-[15px] leading-relaxed text-black/60">
-              {faq.answer}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-black/10 transition-transform duration-300 group-open:rotate-45">
+              <Plus className="h-4 w-4 text-[#FF4F00]" />
+            </div>
+          </summary>
+
+          <p className="max-w-[95%] pb-6 text-[15px] leading-relaxed text-black/60">
+            {faq.answer}
+          </p>
+        </details>
+      ))}
     </div>
   );
 }
 
-// ─────────────────────────────────────────────
-// FAQ SECTION
-// ─────────────────────────────────────────────
-
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
   return (
-    <section className="relative overflow-hidden bg-white py-18" id="faq">
+    <section
+      className="relative overflow-hidden bg-white py-18"
+      id="faq"
+    >
       {/* Background Text */}
       <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none text-[16vw] font-black uppercase leading-none text-black/[0.03]">
         FAQ
@@ -155,54 +120,16 @@ export default function FAQSection() {
         </div>
 
         {/* FAQ GRID */}
-        <div className="columns-1 gap-12 md:columns-2"> 
-          {/* LEFT COLUMN */}
-          <div>
-            {leftFAQs.map((faq, index) => (
-              <FAQItem
-                key={faq.question}
-                faq={faq}
-                isOpen={openIndex === index}
-                onClick={() =>
-                  setOpenIndex(openIndex === index ? null : index)
-                }
-              />
-            ))}
-          </div>
+        <div className="grid gap-12 md:grid-cols-2">
+          <FAQColumn items={leftFAQs} />
 
-          {/* RIGHT COLUMN */}
-          <div>
-            {rightFAQs.map((faq, index) => {
-              const actualIndex = index + leftFAQs.length;
-
-              return (
-                <FAQItem
-                  key={faq.question}
-                  faq={faq}
-                  isOpen={openIndex === actualIndex}
-                  onClick={() =>
-                    setOpenIndex(
-                      openIndex === actualIndex
-                        ? null
-                        : actualIndex
-                    )
-                  }
-                />
-              );
-            })}
-          </div>
+          <FAQColumn items={rightFAQs} />
         </div>
 
         {/* FOOTER NOTE */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-12 text-center text-xs font-semibold uppercase tracking-[0.25em] text-black/50"
-        >
+        <p className="mt-12 text-center text-xs font-semibold uppercase tracking-[0.25em] text-black/50">
           Still have questions? Contact our support team anytime.
-        </motion.p>
+        </p>
       </div>
     </section>
   );
