@@ -23,7 +23,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/icon.png"
+            src="/icon.svg"
             alt="Janvi Packers & Movers Logo"
             width={200}
             height={200}

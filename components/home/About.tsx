@@ -213,7 +213,7 @@ export default function About() {
             {/* Image */}
             <div className="relative aspect-[4/3] w-full">
               <Image
-                src="/about.png"
+                src="/about.webp"
                 alt="Janvi Packers & Movers"
                 fill
                 priority

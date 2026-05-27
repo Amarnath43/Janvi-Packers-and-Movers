@@ -47,7 +47,7 @@ export default function Footer() {
               className="inline-flex items-center gap-2"
             >
                  <Image
-              src="/icon.png"
+              src="/icon.svg"
               alt="Janvi Packers & Movers Logo" 
                 width={200}
                 height={200}
