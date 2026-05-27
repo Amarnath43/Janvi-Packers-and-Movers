@@ -89,10 +89,7 @@ function BranchCard({
         {/* SOFT GLOW */}
         <div className="absolute inset-0 bg-[#FF4F00]/[0.03] blur-3xl" />
 
-        {/* SVG */}
-        <div className="relative z-10 h-28 w-full text-black flex items-center justify-center">
-         <Image src={SVG} alt={branch.landmark} width={100} height={100} />
-        </div>
+      
 
         
       </div>
