@@ -19,7 +19,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        
+
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <Image
@@ -80,7 +80,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="border-t border-gray-200 bg-white md:hidden">
+        <div className="absolute left-0 top-full w-full border-t border-gray-200 bg-white shadow-xl md:hidden">
           <div className="space-y-1 px-4 py-5">
             {navLinks.map((link) => (
               <Link
