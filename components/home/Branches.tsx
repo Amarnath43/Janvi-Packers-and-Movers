@@ -25,6 +25,7 @@ const branches = [
     phone: "+91 76800 13880",
     mapsUrl: "https://www.google.com/maps?q=17.482417,78.4806416&z=17&hl=en",
     SVG: "/Charminar.png",
+    landmark: "Charminar",
   },
   {
     city: "Chennai",
@@ -34,6 +35,7 @@ const branches = [
     phone: "+91 76800 13880",
     mapsUrl: "https://www.google.com/maps?q=13.0740145,80.1092914&z=17&hl=en",
      SVG: "/monument.png",
+    landmark: "Marina Beach",
   },
   {
     city: "Bengaluru",
@@ -43,6 +45,7 @@ const branches = [
     phone: "+91 7680013880",
     mapsUrl: "https://www.google.com/maps?q=13.0209629,77.5370009&z=17&hl=en",
     SVG: "/landmark.png",
+    landmark: "Vidhana Soudha",
   },
 ];
 
@@ -89,7 +92,10 @@ function BranchCard({
         {/* SOFT GLOW */}
         <div className="absolute inset-0 bg-[#FF4F00]/[0.03] blur-3xl" />
 
-      
+        {/* SVG */}
+        <div className="relative z-10 h-28 w-full text-black flex items-center justify-center">
+         <Image src={SVG} alt={branch.SVG} width={100} height={100} />
+        </div>
 
         
       </div>
