@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -70,7 +70,11 @@ export default function Navbar() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="flex items-center justify-center md:hidden"
         >
-          <Menu className="h-7 w-7 text-gray-900" />
+          {mobileMenuOpen ? (
+            <X className="h-7 w-7 text-gray-900" />
+          ) : (
+            <Menu className="h-7 w-7 text-gray-900" />
+          )}
         </button>
       </div>
 
@@ -92,6 +96,7 @@ export default function Navbar() {
             <Link
               href="/#quote"
               className="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-[#FF4F00] px-5 py-3 text-sm font-semibold text-white"
+              onClick={() => setMobileMenuOpen(false)}
             >
               Get Free Quote
             </Link>

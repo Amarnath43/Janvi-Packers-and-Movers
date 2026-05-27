@@ -53,40 +53,6 @@ const faqs = [
   },
 ];
 
-const leftFAQs = faqs.slice(0, Math.ceil(faqs.length / 2));
-const rightFAQs = faqs.slice(Math.ceil(faqs.length / 2));
-
-function FAQColumn({
-  items,
-}: {
-  items: typeof faqs;
-}) {
-  return (
-    <div>
-      {items.map((faq) => (
-        <details
-          key={faq.question}
-          className="group border-b border-black/10"
-        >
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6">
-            <h3 className="text-[17px] font-bold leading-snug text-black">
-              {faq.question}
-            </h3>
-
-            <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-black/10 transition-transform duration-300 group-open:rotate-45">
-              <Plus className="h-4 w-4 text-[#FF4F00]" />
-            </div>
-          </summary>
-
-          <p className="max-w-[95%] pb-6 text-[15px] leading-relaxed text-black/60">
-            {faq.answer}
-          </p>
-        </details>
-      ))}
-    </div>
-  );
-}
-
 export default function FAQSection() {
   return (
     <section
@@ -94,7 +60,7 @@ export default function FAQSection() {
       id="faq"
     >
       {/* Background Text */}
-      <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none text-[16vw] font-black uppercase leading-none text-black/[0.03]">
+      <div className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 select-none text-[16vw] font-black uppercase leading-none text-black/[0.03] lg:block">
         FAQ
       </div>
 
@@ -120,10 +86,27 @@ export default function FAQSection() {
         </div>
 
         {/* FAQ GRID */}
-        <div className="grid gap-12 md:grid-cols-2">
-          <FAQColumn items={leftFAQs} />
+        <div className="grid gap-x-12 md:grid-cols-2">
+          {faqs.map((faq) => (
+            <details
+              key={faq.question}
+              className="group border-b border-black/10"
+            >
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6">
+                <h3 className="text-[17px] font-bold leading-snug text-black">
+                  {faq.question}
+                </h3>
 
-          <FAQColumn items={rightFAQs} />
+                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-black/10 transition-transform duration-300 group-open:rotate-45">
+                  <Plus className="h-4 w-4 text-[#FF4F00]" />
+                </div>
+              </summary>
+
+              <p className="max-w-[95%] pb-6 text-[15px] leading-relaxed text-black/60">
+                {faq.answer}
+              </p>
+            </details>
+          ))}
         </div>
 
         {/* FOOTER NOTE */}

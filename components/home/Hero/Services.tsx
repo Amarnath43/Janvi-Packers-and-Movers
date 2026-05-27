@@ -79,7 +79,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-[#fafafa] py-6 md:py-14"
+      className="relative overflow-hidden bg-[#fafafa] py-14 scroll-mt-20"
     >
       {/* Ambient Background */}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(255,79,0,0.08),transparent_28%)]" />
