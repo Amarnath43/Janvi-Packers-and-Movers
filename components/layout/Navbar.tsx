@@ -58,7 +58,7 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden md:block">
           <Link
-            href="#quote"
+            href="/#quote"
             className="inline-flex items-center justify-center rounded-lg bg-[#FF4F00] px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
           >
             Get Free Quote

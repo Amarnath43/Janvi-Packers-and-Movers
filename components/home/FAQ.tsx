@@ -90,7 +90,7 @@ function FAQColumn({
 export default function FAQSection() {
   return (
     <section
-      className="relative overflow-hidden bg-white py-18"
+      className="relative overflow-hidden bg-white py-18 scroll-mt-20"
       id="faq"
     >
       {/* Background Text */}
